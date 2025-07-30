@@ -13,7 +13,7 @@ class Messpusher:
             logger.warning('Pushplus not configured, exiting')
             return False
         try:
-            url = 'http://www.pushplus.plus/send'
+            url = 'https://www.pushplus.plus/send'
             data = {
                 'title': title,
                 'content': message,
