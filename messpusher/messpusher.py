@@ -34,5 +34,15 @@ class Messpusher:
 
 
     def send_all(self, title, message):
+        res_flag = False # Initialize result flag, Once a message is successfully sent, it will be set to True
+        logger.info('Starting to send messages to all channels')
         if self.pushplus_config!=None:
-            self.send_pushplus(title, message)
+            res_pushplus = self.send_pushplus(title, message)
+            if res_pushplus:
+                res_flag = True
+        
+        if res_flag:
+            logger.info('At least one channel message sent successfully')
+        else:
+            logger.warning('No channel message sent successfully')
+        return res_flag
